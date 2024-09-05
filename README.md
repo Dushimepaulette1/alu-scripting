@@ -1,1 +1,1 @@
-# alu-scripting
+about regular expressions
