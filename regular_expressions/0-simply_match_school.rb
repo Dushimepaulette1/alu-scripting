@@ -13,4 +13,4 @@ input = ARGV[0]
 matches = input.scan(/School/)
 
 # Printing the matches combined
-puts matches.join:
+puts matches.join
