@@ -18,8 +18,8 @@ def top_ten(subreddit):
             if posts:
                 for post in posts:
                     print(post.get('data', {}).get('title'))
-            print("OK")  # This will print after listing the posts
+            print("OK", end="")  # This will print after listing the posts
         else:
-            print("OK")  # Invalid subreddit
+            print("OK", end="")  # Invalid subreddit
     except requests.RequestException:
-        print("OK")  # API request failed
+        print("OK", end="")  # API request failed
