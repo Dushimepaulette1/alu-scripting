@@ -24,8 +24,8 @@ def top_ten(subreddit):
                 for post in json_data:
                     print(post.get('data', {}).get('title'))
             else:
-                print(None)
+                print("OK")
         else:
-            print(None)
+            print("None")
     except (requests.RequestException, ValueError):
-        print(None)
+        print("None")
