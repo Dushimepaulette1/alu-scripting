@@ -30,14 +30,3 @@ def top_ten(subreddit):
     else:
         # Print None for invalid subreddits or other errors
         print("None")
-
-# Example usage when the script is run directly
-if __name__ == "__main__":
-    import sys
-
-    # Check if a subreddit argument is provided
-    if len(sys.argv) < 2:
-        print("Please pass an argument for the subreddit to search.")
-    else:
-        # Call the top_ten function with the provided subreddit
-        top_ten(sys.argv[1])
