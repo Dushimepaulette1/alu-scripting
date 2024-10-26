@@ -1,32 +1,24 @@
 #!/usr/bin/python3
-"""
-This module contains a function that queries the Reddit API and prints
-the titles of the first 10 hot posts listed for a given subreddit.
-"""
-
+"""Script that fetch 10 hot post for a given subreddit."""
 import requests
-import sys
+
 
 def top_ten(subreddit):
-    # Construct the URL for the Reddit API
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'}  # Specify User-Agent header
+    """Return number of subscribers if @subreddit is valid subreddit.
+    if not return 0."""
 
-    # Make the GET request to Reddit API
-    response = requests.get(url, headers=headers, allow_redirects=False)
+    headers = {'User-Agent': 'MyAPI/0.0.1'}
+    subreddit_url = "https://reddit.com/r/{}.json".format(subreddit)
+    response = requests.get(subreddit_url, headers=headers)
 
-    # Check if the request was successful (status code 200)
     if response.status_code == 200:
-        data = response.json()
-        posts = data.get('data', {}).get('children', [])
-
-        # Check if there are any posts
-        if not posts:
-            print("No posts found.")
-        else:
-            # Print the titles of the first 10 posts
-            for post in posts:
-                print(post['data']['title'])
+        json_data = response.json()
+        for i in range(10):
+            print(
+                json_data.get('data')
+                .get('children')[i]
+                .get('data')
+                .get('title')
+            )
     else:
-        # Print None for invalid subreddits or other errors
-        print("None")
+        print(None)
