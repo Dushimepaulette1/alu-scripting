@@ -2,6 +2,7 @@
 """Script that fetches the top 10 hot posts for a given subreddit."""
 
 import requests
+import sys
 
 
 def top_ten(subreddit):
@@ -18,8 +19,8 @@ def top_ten(subreddit):
             if posts:
                 for post in posts:
                     print(post.get('data', {}).get('title'))
-            print("OK", end="")  # This will print after listing the posts
+            sys.stdout.write("OK")  # Output "OK" without extra characters
         else:
-            print("OK", end="")  # Invalid subreddit
+            sys.stdout.write("OK")  # Output "OK" without extra characters for invalid subreddit
     except requests.RequestException:
-        print("OK", end="")  # API request failed
+        sys.stdout.write("OK")  # Output "OK" without extra characters for request failure
