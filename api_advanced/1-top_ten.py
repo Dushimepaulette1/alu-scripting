@@ -8,7 +8,7 @@ def top_ten(subreddit):
     """Prints the titles of the top 10 hot posts for a given subreddit.
     If the subreddit is invalid, prints 'None'.
     """
-    headers = {'User-Agent': 'MyAPI/0.0.1'}
+    headers = {'User-Agent': 'MyRedditAPI/0.0.1'}
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     
     try:
@@ -19,8 +19,8 @@ def top_ten(subreddit):
                 for post in posts:
                     print(post.get('data', {}).get('title'))
             else:
-                print("None")
+                print("None")  # No posts found
         else:
-            print("None")
+            print("None")  # Invalid subreddit
     except requests.RequestException:
-        print("None")
+        print("None")  # API request failed
